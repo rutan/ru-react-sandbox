@@ -1,7 +1,7 @@
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var paths = (function () {
+const paths = (function () {
     var rootPath = path.join(__dirname, './');
     return {
         root: rootPath,
@@ -15,7 +15,7 @@ module.exports = {
     entry: {
         bundle: [
             path.join(paths.nodeModules, '/normalize.css/normalize.css'),
-            path.join(paths.src, '/css/index.scss'),
+            path.join(paths.src, '/css/index.css'),
             path.join(paths.src, '/js/index.js')
         ]
     },
@@ -26,21 +26,24 @@ module.exports = {
     },
     module: {
         loaders: [
-                {
+            {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel',
-                query: {
-                    presets: ['es2015', 'es2016', 'react'],
-                    plugins: ['transform-runtime']
-                }
+                use: 'babel-loader'
             },
             {
-                test: /\.s?css$/,
-                loader: ExtractTextPlugin.extract(
-                    'style',
-                    'css!sass?sourceMap&includePaths[]=' + paths.nodeModules
-                )
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    }
+                ]
             }
         ]
     },
