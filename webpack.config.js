@@ -1,5 +1,5 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const paths = (function () {
     var rootPath = path.join(__dirname, './');
@@ -15,13 +15,11 @@ module.exports = {
     entry: {
         bundle: [
             path.join(paths.nodeModules, '/normalize.css/normalize.css'),
-            path.join(paths.src, '/css/index.css'),
-            path.join(paths.src, '/js/index.js')
+            path.join(paths.src, '/index.js')
         ]
     },
     output: {
         path: paths.output,
-        publicPath: '/_build',
         filename: '[name].js',
     },
     module: {
@@ -48,6 +46,8 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('bundle.css')
+        new HtmlWebpackPlugin({
+            template: path.join(paths.src, 'index.html')
+        })
     ]
 };

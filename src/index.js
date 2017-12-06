@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import _ from './global.css';
 
 class App extends React.Component {
     render() {
@@ -11,5 +12,5 @@ class App extends React.Component {
 
 ReactDOM.render(
     <App />,
-    document.getElementById('app')
+    document.getElementById('root')
 );

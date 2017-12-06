@@ -1,10 +1,11 @@
 {
     "presets": [
-        "react",
+        "@babel/preset-react",
         [
-            "latest", {
-                "es2015": false
+            "@babel/preset-env", {
+                "modules": false,
+                "useBuiltIns": "usage"
             }
         ]
     ]
-}
+  }
