@@ -1,53 +1,73 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const paths = (function () {
-    var rootPath = path.join(__dirname, './');
-    return {
-        root: rootPath,
-        nodeModules: path.join(rootPath, './node_modules/'),
-        src: path.join(rootPath, './src'),
-        output: path.join(rootPath, './_build')
-    };
+const isProduction = process.env.NODE_ENV === 'production';
+const paths = (() => {
+  var rootPath = path.join(__dirname, './');
+  return {
+    root: rootPath,
+    nodeModules: path.join(rootPath, './node_modules/'),
+    src: path.join(rootPath, './src'),
+    output: path.join(rootPath, './_build')
+  };
 })();
 
 module.exports = {
-    entry: {
-        bundle: [
-            path.join(paths.nodeModules, '/normalize.css/normalize.css'),
-            path.join(paths.src, '/index.js')
+  mode: isProduction ? 'production' : 'development',
+  entry: {
+    bundle: [path.join(paths.nodeModules, '/ress/ress.css'), path.join(paths.src, '/global.scss'), path.join(paths.src, '/index.ts')]
+  },
+  output: {
+    path: paths.output,
+    filename: '[name].js'
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(j|t)sx?$/,
+        include: paths.src,
+        use: [
+          {
+            loader: 'babel-loader'
+          },
+          {
+            loader: 'ts-loader'
+          }
         ]
-    },
-    output: {
-        path: paths.output,
-        filename: '[name].js',
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                use: 'babel-loader'
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    {
-                        loader: 'style-loader',
-                    },
-                    {
-                        loader: 'css-loader'
-                    },
-                    {
-                        loader: 'postcss-loader'
-                    }
-                ]
-            }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'postcss-loader'
+          }
         ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: path.join(paths.src, 'index.html')
-        })
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'postcss-loader'
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      }
     ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(paths.src, 'index.html')
+    })
+  ]
 };
