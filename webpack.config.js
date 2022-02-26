@@ -29,14 +29,11 @@ module.exports = {
       {
         test: /\.(j|t)sx?$/,
         include: paths.src,
-        use: [
-          {
-            loader: 'babel-loader'
-          },
-          {
-            loader: 'ts-loader'
-          }
-        ]
+        loader: 'esbuild-loader',
+        options: {
+          loader: 'tsx',
+          target: 'es2015'
+        }
       },
       {
         test: /\.css$/,
