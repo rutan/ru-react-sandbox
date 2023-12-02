@@ -1,14 +1,18 @@
 {
   "name": "ru-react-sandbox",
-  "version": "1.0.0",
-  "description": "",
-  "author": "ru_shalm",
-  "license": "MIT",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "start": "webpack serve",
-    "build": "run-s clean build:*",
-    "build:webpack": "cross-env NODE_ENV=production webpack",
-    "clean": "rimraf ./_build"
+    "start": "vite preview",
+    "dev": "vite",
+    "build": "run-s lint clean build:*",
+    "build:vite": "cross-env NODE_ENV=production vite build",
+    "lint": "run-s lint:*",
+    "lint:prettier": "prettier --check \"./src/**/*.{html,js,jsx,ts,tsx,json,css,scss}\"",
+    "lint:tsc": "tsc --noEmit",
+    "format": "run-s format:*",
+    "format:prettier": "prettier --write \"./**/*.{html,js,jsx,ts,tsx,json,css,scss}\"",
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -16,24 +20,15 @@
     "ress": "^5.0.2"
   },
   "devDependencies": {
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.1",
-    "autoprefixer": "^10.4.14",
+    "@types/react": "^18.2.40",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.0",
     "cross-env": "^7.0.3",
-    "css-loader": "^6.7.3",
-    "esbuild-loader": "^3.0.1",
-    "html-webpack-plugin": "^5.5.1",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.23",
-    "postcss-loader": "^7.3.0",
-    "prettier": "^2.8.8",
-    "rimraf": "^5.0.0",
-    "sass": "^1.62.1",
-    "sass-loader": "^13.2.2",
-    "style-loader": "^3.3.2",
-    "typescript": "^5.0.4",
-    "webpack": "^5.81.0",
-    "webpack-cli": "^5.0.2",
-    "webpack-dev-server": "^4.13.3"
+    "prettier": "^3.1.0",
+    "rimraf": "^5.0.5",
+    "sass": "^1.69.5",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.4"
   }
 }

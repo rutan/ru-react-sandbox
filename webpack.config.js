@@ -8,21 +8,25 @@ const paths = (() => {
     root: rootPath,
     nodeModules: path.join(rootPath, './node_modules/'),
     src: path.join(rootPath, './src'),
-    output: path.join(rootPath, './_build')
+    output: path.join(rootPath, './_build'),
   };
 })();
 
 module.exports = {
   mode: isProduction ? 'production' : 'development',
   entry: {
-    bundle: [path.join(paths.nodeModules, '/ress/ress.css'), path.join(paths.src, '/global.scss'), path.join(paths.src, '/index.ts')]
+    bundle: [
+      path.join(paths.nodeModules, '/ress/ress.css'),
+      path.join(paths.src, '/global.scss'),
+      path.join(paths.src, '/index.ts'),
+    ],
   },
   output: {
     path: paths.output,
-    filename: '[name].js'
+    filename: '[name].js',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   module: {
     rules: [
@@ -32,22 +36,22 @@ module.exports = {
         loader: 'esbuild-loader',
         options: {
           loader: 'tsx',
-          target: 'es2015'
-        }
+          target: 'es2015',
+        },
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader']
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
-      }
-    ]
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(paths.src, 'index.html')
-    })
-  ]
+      template: path.join(paths.src, 'index.html'),
+    }),
+  ],
 };

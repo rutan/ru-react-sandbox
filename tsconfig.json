@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es2020",
     "module": "esnext",
     "allowJs": true,
     "rootDir": ".",
     "outDir": "./lib/",
-    "lib": ["es2017", "dom"],
+    "lib": ["es2020", "dom"],
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
