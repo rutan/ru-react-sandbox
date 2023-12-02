@@ -1,7 +1,5 @@
 import React from 'react';
 
-export class App extends React.Component {
-  render() {
-    return <div>ru-react-sandbox</div>;
-  }
-}
+export const App: React.FC = () => {
+  return <div>ru-react-sandbox</div>;
+};
