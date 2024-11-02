@@ -5,13 +5,12 @@
   "scripts": {
     "start": "vite preview",
     "dev": "vite",
-    "build": "run-s lint clean build:*",
+    "build": "run-s clean build:*",
     "build:vite": "cross-env NODE_ENV=production vite build",
     "lint": "run-s lint:*",
-    "lint:prettier": "prettier --check \"./src/**/*.{html,js,jsx,ts,tsx,json,css,scss}\"",
+    "lint:biome": "biome check ./",
     "lint:tsc": "tsc --noEmit",
-    "format": "run-s format:*",
-    "format:prettier": "prettier --write \"./**/*.{html,js,jsx,ts,tsx,json,css,scss}\"",
+    "format": "biome check --write ./",
     "clean": "rimraf ./dist"
   },
   "dependencies": {
@@ -20,12 +19,12 @@
     "ress": "^5.0.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
     "cross-env": "^7.0.3",
     "npm-run-all2": "^7.0.1",
-    "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
     "sass": "^1.80.6",
     "typescript": "^5.6.3",

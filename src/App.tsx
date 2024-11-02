@@ -1,5 +1,3 @@
-import React from 'react';
-
-export const App: React.FC = () => {
+export const App = () => {
   return <div>ru-react-sandbox</div>;
 };
