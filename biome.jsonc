@@ -14,7 +14,7 @@
       "!.vscode/**/*",
 
       // claude
-      "!claude/**/*",
+      "!.claude/**/*",
 
       // dist
       "!dist/**/*",
