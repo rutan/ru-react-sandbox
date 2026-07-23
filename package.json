@@ -10,29 +10,28 @@
     "lint": "run-s lint:*",
     "lint:oxfmt": "oxfmt --check .",
     "lint:oxlint": "oxlint .",
-    "lint:tsc": "tsgo",
+    "lint:tsc": "tsc",
     "format": "run-s format:*",
     "format:oxfmt": "oxfmt --write .",
     "format:oxlint": "oxlint --fix ."
   },
   "dependencies": {
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "tailwindcss": "^4.2.1"
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.2.1",
-    "@types/react": "^19.2.14",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "@typescript/native-preview": "7.0.0-dev.20260316.1",
-    "@vitejs/plugin-react": "^6.0.1",
+    "@vitejs/plugin-react": "^6.0.4",
     "cross-env": "^10.1.0",
-    "npm-run-all2": "^8.0.4",
-    "oxfmt": "^0.41.0",
-    "oxlint": "^1.56.0",
-    "oxlint-tsgolint": "^0.17.0",
-    "typescript": "^5.9.3",
-    "vite": "^8.0.5"
+    "npm-run-all2": "^9.0.2",
+    "oxfmt": "^0.60.0",
+    "oxlint": "^1.75.0",
+    "oxlint-tsgolint": "^7.0.2001",
+    "typescript": "^7.0.2",
+    "vite": "^8.1.5"
   },
-  "packageManager": "pnpm@10.32.1"
+  "packageManager": "pnpm@11.16.0"
 }
