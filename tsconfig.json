@@ -6,6 +6,7 @@
     "rootDir": ".",
     "noEmit": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["vite/client"],
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "esModuleInterop": true,

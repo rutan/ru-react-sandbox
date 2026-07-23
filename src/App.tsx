@@ -1,3 +1,5 @@
+import styles from './App.module.css';
+
 export const App = () => {
-  return <div>ru-react-sandbox</div>;
+  return <div className={styles.root}>ru-react-sandbox</div>;
 };
